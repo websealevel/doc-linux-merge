@@ -54,7 +54,7 @@ patch -p0 <a_to_b.patch --dry-run
 
 Ici, `patch` modifiera le fichier `slides_a.md` (le premier argument de diff) pour qu'il soit identique à `slides_b.md`.
 
-## merge
+## appliquer un patch: `--merge` pour gérer les conflits
 
 `patch` dispose également d'une option `--merge`. Permet de merger un fichier patch de manière similaire à la commande `merge`. Si un conflit est trouvé, `patch` ecrit sur la sortie un warning avec des brackets du type
 ~~~bash
@@ -67,7 +67,7 @@ nouvelles lignes du patch
 >>>>>>>
 ~~~
 
-Pour merger le fichier `slides_b.md` dans `slides_a.md` on peut donc faire
+Pour patcher le fichier `slides_b.md` dans `slides_a.md` en gérant d'éventuels conflits, on peut donc faire
 
 ~~~
 patch -p0 <a_to_b.patch --merge
@@ -77,4 +77,22 @@ Ici on fait un merge *sur place*. Pour faire un merge sans toucher les fichiers 
 
 ~~~
 patch -p0 <a_to_b.patch --merge -o slides.md
+~~~
+
+>Ici on reste dans le cas du **patch**, c'est à dire, appliquer des modifications à un fichier pour qu'il corresponde à un autre fichier. **Si une ligne est présente dans le fichier d'origine qui n'est pas présente dans le fichier à reproduire elle sera supprimée du fichier final**.
+
+## merge : merger deux fichiers
+
+On peut utiliser `git merge-file` pour faire un merge. Pour cela, il faut donner l'ancetre commun aux deux fichiers. 
+
+~~~ bash
+git merge-file <current-version> <common-ancestor> <other-version>
+~~~
+
+Le fichier mergé, le résultat, sera placé dans le fichier `<current-verion>`.
+
+Par exemple, pour merger `slides_a.md` et `slides_b.md` dans `slides_a.md`, avec `slides.md` l'ancêtre commun.
+
+~~~ bash
+git merge-file slides_a.md slides.md slides_b.md
 ~~~

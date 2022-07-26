@@ -47,9 +47,28 @@ indique comment modifier `slides_a.md` pour qu'il soit comme `slides_b.md`
 On peut ensuite appliquer ce patch au fichier `slides_a.md` avec la commande `patch originalfile patchfile` ou `patch -p0 < patchfile`
 
 ~~~
-patch -p0 < a_to_b.patch
+patch -p0 --dry-run < a_to_b.patch
 ~~~
+
+L'option `--dry-run` permet d'afficher le résultat de la commande sans modifier les fichiers. Important pour tester l'esprit tranquille.
 
 Ici, `patch` modifiera le fichier `slides_a.md` (le premier argument de diff) pour qu'il soit identique à `slides_b.md`.
 
-## merge : 
+## merge
+
+patch dispose également d'une option --merge. Permet de merger un fichier patch de manière similaire à la commande merge. Si un conflit est trouvé, patch ecrit sur la sortie un warning avec des brackets du type
+~~~bash
+<<<<<<<
+lignes du fichier original
+|||||||
+lignes du fichier du patch
+=======
+nouvelles lignes du patch
+>>>>>>>
+~~~
+
+Pour merger le fichier slides_b.md dans slides_a.md on peut donc faire
+
+~~~
+patch -p0 < a_to_b.patch --merge
+~~~

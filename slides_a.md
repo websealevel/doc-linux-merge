@@ -1,3 +1,3 @@
-foo
-une autre ligne presente que dans ce fichier
+bar
 meme ligne sur les deux fichiers
+une ligne spécifique à ce fichier

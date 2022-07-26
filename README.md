@@ -47,7 +47,7 @@ indique comment modifier `slides_a.md` pour qu'il soit comme `slides_b.md`
 On peut ensuite appliquer ce patch au fichier `slides_a.md` avec la commande `patch originalfile patchfile` ou `patch -p0 < patchfile`
 
 ~~~
-patch -p0 --dry-run < a_to_b.patch
+patch -p0 <a_to_b.patch --dry-run
 ~~~
 
 L'option `--dry-run` permet d'afficher le résultat de la commande sans modifier les fichiers. Important pour tester l'esprit tranquille.
@@ -67,8 +67,14 @@ nouvelles lignes du patch
 >>>>>>>
 ~~~
 
-Pour merger le fichier slides_b.md dans slides_a.md on peut donc faire
+Pour merger le fichier `slides_b.md` dans `slides_a.md` on peut donc faire
 
 ~~~
-patch -p0 < a_to_b.patch --merge
+patch -p0 <a_to_b.patch --merge
+~~~
+
+Ici on fait un merge *sur place*. Pour faire un merge sans toucher les fichiers d'origine, on peut préciser un fichier de sortie `slides.md` avec l'option `-o`
+
+~~~
+patch -p0 <a_to_b.patch --merge -o slides.md
 ~~~

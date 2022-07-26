@@ -56,7 +56,7 @@ Ici, `patch` modifiera le fichier `slides_a.md` (le premier argument de diff) po
 
 ## merge
 
-`patch` dispose également d'une option `--merge`. Permet de merger un fichier patch de manière similaire à la commande merge. Si un conflit est trouvé, `patch` ecrit sur la sortie un warning avec des brackets du type
+`patch` dispose également d'une option `--merge`. Permet de merger un fichier patch de manière similaire à la commande `merge`. Si un conflit est trouvé, `patch` ecrit sur la sortie un warning avec des brackets du type
 ~~~bash
 <<<<<<<
 lignes du fichier original

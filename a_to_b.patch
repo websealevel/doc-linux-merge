@@ -1,0 +1,8 @@
+--- slides_a.md	2022-07-26 09:14:45.486457000 +0200
++++ slides_b.md	2022-07-26 09:24:37.885238187 +0200
+@@ -1,3 +1,3 @@
+-foo
+-une autre ligne presente que dans ce fichier
++bar
+ meme ligne sur les deux fichiers
++une ligne spécifique à ce fichier

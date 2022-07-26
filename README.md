@@ -42,15 +42,15 @@ indique comment modifier `slides_a.md` pour qu'il soit comme `slides_b.md`
 - ne pas toucher à la ligne (` `) `meme ligne sur les deux fichiers` (commune aux deux)
 - ajouter la ligne (`+`) qui contient `ligne spécifique à ce fichier`
 
-## appliquer un patch: modifier un fichier pour qu'il soit identque à l'autre
+## appliquer un patch: modifier un fichier pour qu'il soit identique à un autre
 
-On peut ensuite appliquer ce patch au fichier `slides_a.md` avec la commande `patch originalfile patchfile` ou `patch -p0 < patchfile`
+On peut ensuite appliquer ce fichier patch au fichier `slides_a.md` avec la commande `patch originalfile patchfile` ou `patch -p0 < patchfile`
 
 ~~~
 patch -p0 <a_to_b.patch --dry-run
 ~~~
 
-L'option `--dry-run` permet d'afficher le résultat de la commande sans modifier les fichiers. Important pour tester l'esprit tranquille.
+>L'option `--dry-run` permet d'afficher le résultat de la commande sans modifier les fichiers. Important pour tester l'esprit tranquille.
 
 Ici, `patch` modifiera le fichier `slides_a.md` (le premier argument de diff) pour qu'il soit identique à `slides_b.md`.
 
